@@ -53,23 +53,6 @@ export default function HeroSlider() {
           ))}
         </div>
 
-        {/* Slide indicators */}
-        <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center gap-2">
-          {images.map((image, index) => (
-            <button
-              key={image.src}
-              type="button"
-              onClick={() => setCurrentIndex(index)}
-              aria-label={`Show image ${index + 1}`}
-              aria-current={currentIndex === index ? "true" : undefined}
-              className={`h-2.5 rounded-full transition-all duration-300 ${
-                currentIndex === index
-                  ? "w-8 bg-[#0F766E]"
-                  : "w-2.5 bg-white/80 hover:bg-white"
-              }`}
-            />
-          ))}
-        </div>
       </div>
 
       {/* Floating message */}

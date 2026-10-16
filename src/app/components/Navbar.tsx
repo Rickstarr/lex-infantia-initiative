@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -13,69 +13,19 @@ const navLinks = [
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [typedText, setTypedText] = useState("");
-
-  const fullText = "Lex Infantia Initiative";
-
-  useEffect(() => {
-    let index = 0;
-    let typingTimer: ReturnType<typeof setTimeout>;
-    let restartTimer: ReturnType<typeof setTimeout>;
-
-    const typeText = () => {
-      index = 0;
-      setTypedText("");
-
-      const typeNextCharacter = () => {
-        index++;
-
-        setTypedText(fullText.slice(0, index));
-
-        if (index < fullText.length) {
-          typingTimer = setTimeout(typeNextCharacter, 115);
-        } else {
-          restartTimer = setTimeout(typeText, 30000);
-        }
-      };
-
-      typingTimer = setTimeout(typeNextCharacter, 150);
-    };
-
-    typeText();
-
-    return () => {
-      clearTimeout(typingTimer);
-      clearTimeout(restartTimer);
-    };
-  }, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#E8DAD8] bg-[#FFF8F7]/95 shadow-sm backdrop-blur-md">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
-        {/* Animated Logo - Original Font Preserved */}
         <a
           href="#home"
           onClick={() => setMenuOpen(false)}
-          aria-label="Lex Infantia Initiative"
           className="text-xl font-extrabold tracking-tight text-[#0F766E] sm:text-2xl"
         >
-          <span>{typedText.slice(0, 12)}</span>
-
-          {typedText.length > 12 && (
-            <span className="ml-1 text-[#D98F9B]">
-              {typedText.slice(13)}
-            </span>
-          )}
-
-          <span
-            aria-hidden="true"
-            className="typing-cursor ml-0.5 inline-block text-[#D98F9B]"
-          >
-            
-          </span>
+          Lex Infantia
+          <span className="ml-1 text-[#D98F9B]">Initiative</span>
         </a>
 
-        {/* Mobile Menu Button */}
         <button
           type="button"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -88,7 +38,6 @@ export default function Navbar() {
           </span>
         </button>
 
-        {/* Desktop Navigation */}
         <div className="hidden items-center gap-7 md:flex">
           {navLinks.map((link) => (
             <a
@@ -109,7 +58,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Navigation Menu */}
       <div
         className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-in-out md:hidden ${
           menuOpen
@@ -140,30 +88,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
-      {/* Typing Cursor Animation */}
-      <style jsx>{`
-        .typing-cursor {
-          animation: cursor-blink 750ms step-end infinite;
-        }
-
-        @keyframes cursor-blink {
-          0%,
-          100% {
-            opacity: 1;
-          }
-
-          50% {
-            opacity: 0;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .typing-cursor {
-            animation: none;
-          }
-        }
-      `}</style>
     </header>
   );
 }
