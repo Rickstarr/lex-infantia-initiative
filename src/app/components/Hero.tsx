@@ -1,17 +1,15 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
 import HeroSlider from "./HeroSlider";
 import Reveal from "./Reveal";
 
-const firstLine = "Justice Should Not End";
-const secondLine = "Behind Bars.";
+const firstLine = "Every Child Deserves";
+const secondLine = "Protection, Opportunity and a Voice.";
 
 export default function Hero() {
   const [firstText, setFirstText] = useState("");
   const [secondText, setSecondText] = useState("");
-  const [isTyping, setIsTyping] = useState(true);
   const [playful, setPlayful] = useState(false);
 
   useEffect(() => {
@@ -22,8 +20,6 @@ export default function Hero() {
 
     const interval = setInterval(() => {
       if (!deleting) {
-        setIsTyping(true);
-
         if (firstIndex < firstLine.length) {
           firstIndex++;
           setFirstText(firstLine.slice(0, firstIndex));
@@ -33,7 +29,7 @@ export default function Hero() {
         } else {
           pause++;
 
-          if (pause >= 25) {
+          if (pause >= 35) {
             deleting = true;
             pause = 0;
             setPlayful(true);
@@ -48,11 +44,10 @@ export default function Hero() {
           setFirstText(firstLine.slice(0, firstIndex));
         } else {
           deleting = false;
-          setIsTyping(false);
           setPlayful(false);
         }
       }
-    }, 85);
+    }, 65);
 
     return () => clearInterval(interval);
   }, []);
@@ -78,7 +73,7 @@ export default function Hero() {
               <span className="hero-cursor">|</span>
             )}
 
-            <span className="mt-2 block text-[#D98F9B]">
+            <span className="mt-2 block text-[#F4C2C2]">
               {secondText}
               {firstText.length === firstLine.length &&
                 secondText.length < secondLine.length && (
@@ -88,25 +83,26 @@ export default function Hero() {
           </h1>
 
           <p className="mt-6 max-w-xl text-base leading-7 text-white sm:text-lg sm:leading-8">
-            Lex Infantia Initiative promotes children's rights,
-            child protection and access to justice, helping
-            children and vulnerable young people access the
-            support and opportunities they deserve.
+            Lex Infantia Initiative works to promote children's
+            rights, strengthen child protection, raise awareness,
+            and encourage access to appropriate support and
+            justice. We believe every child deserves to grow up
+            safe, respected, heard, and able to enjoy their rights.
           </p>
 
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
               href="#our-work"
-              className="rounded-xl bg-[#0F766E] px-6 py-3.5 text-center font-bold text-white transition duration-300 hover:-translate-y-1 hover:bg-[#115E59] hover:shadow-lg"
+              className="rounded-xl bg-[#F4C2C2] px-6 py-3.5 text-center font-bold text-[#115E59] transition duration-300 hover:-translate-y-1 hover:bg-[#FFF1F0] hover:shadow-lg"
             >
-              Explore Our Work
+              Explore Our Programmes
             </a>
 
             <a
               href="#contact"
-              className="rounded-xl border-2 border-[#0F766E] bg-white px-6 py-3.5 text-center font-bold text-[#0F766E] transition duration-300 hover:-translate-y-1 hover:bg-[#FFF1F0]"
+              className="rounded-xl border-2 border-[#F4C2C2] bg-transparent px-6 py-3.5 text-center font-bold text-white transition duration-300 hover:-translate-y-1 hover:bg-white hover:text-[#115E59]"
             >
-              Get Involved
+              Connect With Us
             </a>
           </div>
         </Reveal>
@@ -143,13 +139,13 @@ export default function Hero() {
             transform: rotate(0deg) scale(1);
           }
           25% {
-            transform: rotate(-2deg) scale(1.02);
+            transform: rotate(-1deg) scale(1.01);
           }
           50% {
-            transform: rotate(2deg) scale(1.02);
+            transform: rotate(1deg) scale(1.01);
           }
           75% {
-            transform: rotate(-1deg) scale(1.01);
+            transform: rotate(-0.5deg) scale(1.005);
           }
           100% {
             transform: rotate(0deg) scale(1);

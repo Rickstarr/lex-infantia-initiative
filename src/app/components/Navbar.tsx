@@ -1,7 +1,7 @@
-
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -16,16 +16,25 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-[#E8DAD8] bg-[#FFF8F7]/95 shadow-sm backdrop-blur-md">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4 lg:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-3 lg:px-8">
+        {/* Logo */}
         <a
           href="#home"
           onClick={() => setMenuOpen(false)}
-          className="text-xl font-extrabold tracking-tight text-[#0F766E] sm:text-2xl"
+          aria-label="Lex Infantia Initiative - Home"
+          className="shrink-0"
         >
-          Lex Infantia
-          <span className="ml-1 text-[#D98F9B]">Initiative</span>
+          <Image
+            src="/images/lex-infantia-logo.png"
+            alt="Lex Infantia Initiative"
+            width={440}
+            height={150}
+            priority
+            className="h-auto w-[150px] object-contain sm:w-[190px] lg:w-[210px]"
+          />
         </a>
 
+        {/* Mobile menu button */}
         <button
           type="button"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
@@ -38,7 +47,8 @@ export default function Navbar() {
           </span>
         </button>
 
-        <div className="hidden items-center gap-7 md:flex">
+        {/* Desktop navigation */}
+        <div className="hidden items-center gap-5 lg:gap-7 md:flex">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -58,6 +68,7 @@ export default function Navbar() {
         </div>
       </nav>
 
+      {/* Mobile navigation */}
       <div
         className={`grid overflow-hidden transition-[grid-template-rows,opacity] duration-300 ease-in-out md:hidden ${
           menuOpen

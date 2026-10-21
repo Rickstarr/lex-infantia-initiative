@@ -1,18 +1,24 @@
+import Image from "next/image";
 import CurrentYear from "./CurrentYear";
 
 export default function Footer() {
   return (
     <footer className="bg-[#163F3B] px-5 pb-6 pt-12 text-white">
       <div className="mx-auto grid max-w-7xl gap-10 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Organization branding */}
         <div>
           <a
             href="#home"
-            className="text-xl font-extrabold text-white"
+            aria-label="Lex Infantia Initiative - Home"
+            className="inline-block rounded-lg"
           >
-            Lex Infantia
-            <span className="ml-1 text-[#F4C2C2]">
-              Initiative
-            </span>
+            <Image
+              src="/images/lex-infantia-logo.png"
+              alt="Lex Infantia Initiative"
+              width={520}
+              height={180}
+              className="h-auto w-[200px] object-contain sm:w-[230px]"
+            />
           </a>
 
           <p className="mt-4 max-w-xs text-sm leading-7 text-white/75">
@@ -21,19 +27,37 @@ export default function Footer() {
           </p>
         </div>
 
+        {/* Quick links */}
         <div>
           <h3 className="font-bold text-[#F4C2C2]">
             Quick Links
           </h3>
 
           <ul className="mt-4 space-y-3 text-sm text-white/80">
-            <li><a className="transition hover:text-[#F4C2C2]" href="#home">Home</a></li>
-            <li><a className="transition hover:text-[#F4C2C2]" href="#about">About Us</a></li>
-            <li><a className="transition hover:text-[#F4C2C2]" href="#our-work">Our Work</a></li>
-            <li><a className="transition hover:text-[#F4C2C2]" href="#programmes">Programmes</a></li>
+            <li>
+              <a className="transition hover:text-[#F4C2C2]" href="#home">
+                Home
+              </a>
+            </li>
+            <li>
+              <a className="transition hover:text-[#F4C2C2]" href="#about">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a className="transition hover:text-[#F4C2C2]" href="#our-work">
+                Our Work
+              </a>
+            </li>
+            <li>
+              <a className="transition hover:text-[#F4C2C2]" href="#programmes">
+                Programmes
+              </a>
+            </li>
           </ul>
         </div>
 
+        {/* Priorities */}
         <div>
           <h3 className="font-bold text-[#F4C2C2]">
             Our Priorities
@@ -47,6 +71,7 @@ export default function Footer() {
           </ul>
         </div>
 
+        {/* Contact */}
         <div>
           <h3 className="font-bold text-[#F4C2C2]">
             Contact
@@ -66,8 +91,9 @@ export default function Footer() {
         </div>
       </div>
 
+      {/* Copyright */}
       <div className="mx-auto mt-10 max-w-7xl border-t border-white/15 pt-6 text-center text-xs text-white/60 sm:text-sm">
-         © <CurrentYear /> Lex Infantia Initiative. All rights reserved.
+        © <CurrentYear /> Lex Infantia Initiative. All rights reserved.
       </div>
     </footer>
   );
