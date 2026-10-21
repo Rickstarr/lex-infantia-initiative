@@ -6,15 +6,18 @@ import Reveal from "./Reveal";
 
 const firstLine = "Every Child Deserves";
 const secondLine = "Protection, Opportunity and a Voice.";
+const thirdLine = "Children's Rights Are Human Rights.";
 
 export default function Hero() {
   const [firstText, setFirstText] = useState("");
   const [secondText, setSecondText] = useState("");
+  const [thirdText, setThirdText] = useState("");
   const [playful, setPlayful] = useState(false);
 
   useEffect(() => {
     let firstIndex = 0;
     let secondIndex = 0;
+    let thirdIndex = 0;
     let deleting = false;
     let pause = 0;
 
@@ -26,6 +29,9 @@ export default function Hero() {
         } else if (secondIndex < secondLine.length) {
           secondIndex++;
           setSecondText(secondLine.slice(0, secondIndex));
+        } else if (thirdIndex < thirdLine.length) {
+          thirdIndex++;
+          setThirdText(thirdLine.slice(0, thirdIndex));
         } else {
           pause++;
 
@@ -36,7 +42,10 @@ export default function Hero() {
           }
         }
       } else {
-        if (secondIndex > 0) {
+        if (thirdIndex > 0) {
+          thirdIndex--;
+          setThirdText(thirdLine.slice(0, thirdIndex));
+        } else if (secondIndex > 0) {
           secondIndex--;
           setSecondText(secondLine.slice(0, secondIndex));
         } else if (firstIndex > 0) {
@@ -69,7 +78,7 @@ export default function Hero() {
             }`}
           >
             {firstText}
-            {firstText.length < firstLine.length && (
+            {firstIndexForCursor(firstText) && (
               <span className="hero-cursor">|</span>
             )}
 
@@ -77,6 +86,15 @@ export default function Hero() {
               {secondText}
               {firstText.length === firstLine.length &&
                 secondText.length < secondLine.length && (
+                  <span className="hero-cursor">|</span>
+                )}
+            </span>
+
+            <span className="mt-2 block text-white">
+              {thirdText}
+              {firstText.length === firstLine.length &&
+                secondText.length === secondLine.length &&
+                thirdText.length < thirdLine.length && (
                   <span className="hero-cursor">|</span>
                 )}
             </span>
@@ -153,10 +171,7 @@ export default function Hero() {
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .hero-cursor {
-            animation: none;
-          }
-
+          .hero-cursor,
           .hero-playful {
             animation: none;
           }
@@ -164,4 +179,8 @@ export default function Hero() {
       `}</style>
     </section>
   );
+}
+
+function firstIndexForCursor(text: string) {
+  return text.length < firstLine.length;
 }
