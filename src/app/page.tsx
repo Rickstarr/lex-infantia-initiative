@@ -8,10 +8,14 @@ import OurImpact from "./components/OurImpact";
 import GetInvolved from "./components/GetInvolved";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Loader from "./components/Loader";
+import BackToTop from "./components/BackToTop";
 
 export default function HomePage() {
   return (
     <>
+    <Loader/>
+
       <Navbar />
 
       <main>
@@ -25,6 +29,8 @@ export default function HomePage() {
       </main>
 
       <Footer />
+
+      <BackToTop/>
     </>
   );
 }
