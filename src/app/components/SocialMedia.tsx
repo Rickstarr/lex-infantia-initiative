@@ -11,7 +11,7 @@ import {
 const socialLinks = [
   {
     name: "WhatsApp",
-    href: "https://wa.me/YOUR_PHONE_NUMBER",
+    href: "https://wa.me/2348102995326",
     icon: FaWhatsapp,
     color: "bg-[#25D366]",
     delay: 0,
@@ -26,7 +26,7 @@ const socialLinks = [
   },
   {
     name: "Email",
-    href: "mailto:YOUR_EMAIL@example.com",
+    href: "mailto:lexinfantia.official@gmail.com",
     icon: FaEnvelope,
     color: "bg-[#F4C2C2]",
     delay: 360,

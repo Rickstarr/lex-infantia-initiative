@@ -1,3 +1,6 @@
+"use client";
+
+import { useState } from "react";
 import Reveal from "./Reveal";
 
 const collaborationOptions = [
@@ -22,6 +25,51 @@ const collaborationOptions = [
 ];
 
 export default function Contact() {
+  
+  const [isSending, setIsSending] = useState(false);
+  const [statusMessage, setStatusMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  async function handleSubmit(
+    event: React.FormEvent<HTMLFormElement>
+  ) {
+    event.preventDefault();
+
+    setIsSending(true);
+    setStatusMessage("");
+    setIsSuccess(false);
+
+    try {
+      const form = event.currentTarget;
+      const formData = new FormData(form);
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        body: formData,
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          result.message || "Unable to send your enquiry."
+        );
+      }
+
+      setIsSuccess(true);
+      setStatusMessage(result.message);
+      form.reset();
+    } catch (error) {
+      setStatusMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again."
+      );
+    } finally {
+      setIsSending(false);
+    }
+  }
+
   return (
     <section
       id="contact"
@@ -136,11 +184,7 @@ export default function Contact() {
                 </p>
               </div>
 
-              <form
-                action="/api/contact"
-                method="POST"
-                className="space-y-5"
-              >
+             <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
                   <label
                     htmlFor="contact-name"
@@ -239,18 +283,38 @@ export default function Contact() {
                   information in this general enquiry form.
                 </p>
 
+                
                 <button
                   type="submit"
-                  className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#0F766E] px-6 py-4 font-bold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:bg-[#115E59] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2"
+                  disabled={isSending}
+                  className="group flex w-full items-center justify-center gap-2 rounded-xl bg-[#0F766E] px-6 py-4 font-bold text-white shadow-md transition duration-300 hover:-translate-y-0.5 hover:bg-[#115E59] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#0F766E] focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
                 >
-                  Send Your Enquiry
-                  <span
-                    aria-hidden="true"
-                    className="transition-transform duration-300 group-hover:translate-x-1"
-                  >
-                    →
-                  </span>
+                  {isSending ? "Sending Your Enquiry..." : "Send Your Enquiry"}
+
+                  {!isSending && (
+                    <span
+                      aria-hidden="true"
+                      className="transition-transform duration-300 group-hover:translate-x-1"
+                    >
+                      →
+                    </span>
+                  )}
                 </button>
+
+                {statusMessage && (
+                  <p
+                    role="status"
+                    aria-live="polite"
+                    className={`mt-4 rounded-xl p-4 text-sm font-medium ${
+                      isSuccess
+                        ? "bg-[#E8F5F2] text-[#115E59]"
+                        : "bg-red-50 text-red-700"
+                    }`}
+                  >
+                    {statusMessage}
+                  </p>
+                )}
+
               </form>
             </div>
           </Reveal>

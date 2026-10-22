@@ -94,7 +94,7 @@ export default function Footer() {
           {/* Social icons */}
           <div className="mt-5 flex items-center gap-3">
             <a
-              href="https://wa.me/08102995326"
+              href="https://wa.me/23408102995326"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp"
@@ -116,7 +116,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="mailto:YOUR_EMAIL@example.com"
+              href="mailto:lexinfantia.official@gmail.com"
               aria-label="Email"
               title="Email"
               className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F4C2C2] text-lg text-[#163F3B] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-lg"
