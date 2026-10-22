@@ -85,3 +85,35 @@ body {
   }
 }
 
+
+@keyframes social-bob {
+  0% {
+    transform: translateY(0);
+  }
+
+  45% {
+    transform: translateY(-8px);
+  }
+
+  75% {
+    transform: translateY(2px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.social-bob {
+  animation: social-bob 450ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-bob {
+    animation: none;
+  }
+
+  .social-icon {
+    transition: none !important;
+  }
+}

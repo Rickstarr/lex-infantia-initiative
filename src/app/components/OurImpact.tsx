@@ -86,10 +86,13 @@ export default function Impact() {
             <h3 className="font-child text-xl font-extrabold text-white sm:text-2xl">
               Every Child's Rights Matter
             </h3>
+            <h3 className="font-child text-xl font-extrabold text-[#F4C2C2] sm:text-2xl">
+              Child Rights Are Human Rights
+            </h3>
 
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-7 text-white/80 sm:text-base">
               Join the conversation, help raise awareness, and connect with
-              us to explore ways to support children's rights and protection.
+              us to explore ways to support child rights and protection.
             </p>
 
             <a

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import HeroSlider from "./HeroSlider";
 import Reveal from "./Reveal";
+import SocialMedia from "./SocialMedia";
 
 const firstLine = "Every Child Deserves";
 const secondLine = "Protection, Opportunity and a Voice.";
@@ -108,6 +109,9 @@ export default function Hero() {
             safe, respected, heard, and able to enjoy their rights.
           </p>
 
+          <SocialMedia />
+          
+          
           <div className="mt-8 flex flex-col gap-4 sm:flex-row">
             <a
               href="#our-work"

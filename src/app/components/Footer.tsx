@@ -1,5 +1,7 @@
+
 import Image from "next/image";
 import CurrentYear from "./CurrentYear";
+import { FaWhatsapp, FaInstagram, FaEnvelope } from "react-icons/fa";
 
 export default function Footer() {
   return (
@@ -50,8 +52,8 @@ export default function Footer() {
               </a>
             </li>
             <li>
-              <a className="transition hover:text-[#F4C2C2]" href="#programmes">
-                Programmes
+              <a className="transition hover:text-[#F4C2C2]" href="#our-impact">
+                Our Impact
               </a>
             </li>
           </ul>
@@ -71,7 +73,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Contact */}
+        {/* Contact and Social Media */}
         <div>
           <h3 className="font-bold text-[#F4C2C2]">
             Contact
@@ -88,6 +90,40 @@ export default function Footer() {
           >
             Get In Touch
           </a>
+
+          {/* Social icons */}
+          <div className="mt-5 flex items-center gap-3">
+            <a
+              href="https://wa.me/08102995326"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              title="WhatsApp"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#25D366] text-lg text-white transition duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-lg"
+            >
+              <FaWhatsapp />
+            </a>
+
+            <a
+              href="https://www.instagram.com/YOUR_USERNAME/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
+              title="Instagram"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-[#833AB4] via-[#E1306C] to-[#FCAF45] text-lg text-white transition duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-lg"
+            >
+              <FaInstagram />
+            </a>
+
+            <a
+              href="mailto:YOUR_EMAIL@example.com"
+              aria-label="Email"
+              title="Email"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-[#F4C2C2] text-lg text-[#163F3B] transition duration-300 hover:-translate-y-1 hover:scale-110 hover:shadow-lg"
+            >
+              <FaEnvelope />
+            </a>
+          </div>
         </div>
       </div>
 
